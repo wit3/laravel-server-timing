@@ -1,8 +1,8 @@
 # Laravel Server Timings
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/machatschek/laravel-server-timing.svg?style=flat-square)](https://packagist.org/packages/beyondcode/laravel-server-timing)
-[![Build Status](https://github.com/mmachatschek/laravel-server-timing/workflows/tests/badge.svg)](https://github.com/beyondcode/laravel-server-timing/actions)
-[![Total Downloads](https://img.shields.io/packagist/dt/machatschek/laravel-server-timing.svg?style=flat-square)](https://packagist.org/packages/beyondcode/laravel-server-timing)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/machatschek/laravel-server-timing.svg?style=flat-square)](https://packagist.org/packages/machatschek/laravel-server-timing)
+[![Build Status](https://github.com/mmachatschek/laravel-server-timing/workflows/tests/badge.svg)](https://github.com/mmachatschek/laravel-server-timing/actions)
+[![Total Downloads](https://img.shields.io/packagist/dt/machatschek/laravel-server-timing.svg?style=flat-square)](https://packagist.org/packages/machatschek/laravel-server-timing)
 
 Add Server-Timing header information from within your Laravel apps.
 
