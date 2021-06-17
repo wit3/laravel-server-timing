@@ -62,6 +62,9 @@ ServerTiming::setDuration('Running expensive task', function() {
 
 You can also use the Server-Timing middleware to only set textual information without providing a duration.
 
+## Disabling
+To disable, add `SERVER_TIMING=false` to your `.env` file.
+
 ## Publishing configuration file
 
 The configuration file could be published using:
