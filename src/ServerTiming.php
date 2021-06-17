@@ -22,9 +22,12 @@ class ServerTiming
 
     public function addMetric(string $metric)
     {
-        $this->finishedEvents[$metric] = null;
+        return $this->setDuration($metric, null);
+    }
 
-        return $this;
+    public function addMessage(string $message)
+    {
+        return $this->addMetric($message);
     }
 
     public function hasStartedEvent(string $key): bool
