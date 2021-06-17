@@ -72,13 +72,22 @@ class ServerTimingTest extends TestCase
     public function it_can_set_events_without_duration()
     {
         $timing = new ServerTiming(new Stopwatch());
-        $timing->addMetric('Custom Metric');
+        $timing->addMetric($metricText = 'Custom Metric');
 
         $events = $timing->events();
 
         $this->assertCount(1, $events);
-        $this->assertTrue(array_key_exists('Custom Metric', $events));
-        $this->assertNull($events['Custom Metric']);
+        $this->assertTrue(array_key_exists($metricText, $events));
+        $this->assertNull($events[$metricText]);
+
+
+        $timing->addMessage($messageText = 'Custom Message');
+
+        $events = $timing->events();
+
+        $this->assertCount(2, $events);
+        $this->assertTrue(array_key_exists($messageText, $events));
+        $this->assertNull($events[$messageText]);
     }
 
     /** @test */
