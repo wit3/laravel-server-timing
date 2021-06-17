@@ -1,18 +1,19 @@
 # Laravel Server Timings
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/beyondcode/laravel-server-timing.svg?style=flat-square)](https://packagist.org/packages/beyondcode/laravel-server-timing)
-[![Build Status](https://img.shields.io/travis/beyondcode/laravel-server-timing/master.svg?style=flat-square)](https://travis-ci.org/beyondcode/laravel-server-timing)
-[![Quality Score](https://img.shields.io/scrutinizer/g/beyondcode/laravel-server-timing.svg?style=flat-square)](https://scrutinizer-ci.com/g/beyondcode/laravel-server-timing)
-[![Total Downloads](https://img.shields.io/packagist/dt/beyondcode/laravel-server-timing.svg?style=flat-square)](https://packagist.org/packages/beyondcode/laravel-server-timing)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/machatschek/laravel-server-timing.svg?style=flat-square)](https://packagist.org/packages/beyondcode/laravel-server-timing)
+[![Build Status](https://github.com/mmachatschek/laravel-server-timing/workflows/tests/badge.svg)](https://github.com/beyondcode/laravel-server-timing/actions)
+[![Total Downloads](https://img.shields.io/packagist/dt/machatschek/laravel-server-timing.svg?style=flat-square)](https://packagist.org/packages/beyondcode/laravel-server-timing)
 
 Add Server-Timing header information from within your Laravel apps.
+
+> :warning: **Fork of beyondcode/laravel-server-timing**
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require beyondcode/laravel-server-timing
+composer require machatschek/laravel-server-timing
 ```
 
 ## Usage
