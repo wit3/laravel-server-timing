@@ -1,11 +1,11 @@
 {
-    "name": "beyondcode/laravel-server-timing",
+    "name": "machatschek/laravel-server-timing",
     "description": "Add Server-Timing header information from within your Laravel apps.",
     "keywords": [
         "beyondcode",
         "laravel-server-timing"
     ],
-    "homepage": "https://github.com/beyondcode/laravel-server-timing",
+    "homepage": "https://github.com/machatschek/laravel-server-timing",
     "license": "MIT",
     "authors": [
         {
