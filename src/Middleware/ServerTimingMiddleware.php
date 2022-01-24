@@ -10,10 +10,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ServerTimingMiddleware
 {
-    /** @var ServerTiming */
-    protected $timing;
+    protected ServerTiming $timing;
 
-    /** @var float|mixed|string */
+    /** @var float|int */
     protected $start;
 
     public function __construct(ServerTiming $timing)
@@ -22,7 +21,7 @@ class ServerTimingMiddleware
         $this->start = $this->getRequestStartTime();
     }
 
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         if(false === config('timing.enabled', true)) {
             return $next($request);
@@ -46,12 +45,12 @@ class ServerTimingMiddleware
         return $response;
     }
 
-    protected function getElapsedTimeInMs()
+    protected function getElapsedTimeInMs(): float
     {
         return (microtime(true) - $this->start) * 1000;
     }
 
-    protected function getRequestStartTime()
+    protected function getRequestStartTime(): int|float
     {
         if (defined('LARAVEL_START')) {
             return LARAVEL_START;

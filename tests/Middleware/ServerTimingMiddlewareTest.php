@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ServerTimingMiddlewareTest extends TestCase
 {
     /** @test */
-    public function it_add_server_timing_header()
+    public function it_add_server_timing_header(): void
     {
         $request = new Request;
 
@@ -25,12 +25,12 @@ class ServerTimingMiddlewareTest extends TestCase
         });
 
         $this->assertArrayHasKey('server-timing', $response->headers->all());
-
     }
 
     /** @test */
-    public function it_is_bypassed_if_configuration_false()
+    public function it_is_bypassed_if_configuration_false(): void
     {
+        /** @phpstan-ignore-next-line */
         $this->app['config']->set('timing.enabled', false);
 
         $request = new Request;
