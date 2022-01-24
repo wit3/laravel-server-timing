@@ -10,12 +10,11 @@ on:
 
 jobs:
     tests:
-
         runs-on: ubuntu-20.04
         strategy:
             fail-fast: false
             matrix:
-                php: [7.3, 7.4, 8.0]
+                php: ['8.0']
                 stability: [prefer-lowest, prefer-stable]
 
         name: PHP ${{ matrix.php }} - ${{ matrix.stability }}
