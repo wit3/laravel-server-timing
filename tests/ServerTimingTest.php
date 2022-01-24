@@ -9,7 +9,7 @@ use Symfony\Component\Stopwatch\Stopwatch;
 class ServerTimingTest extends TestCase
 {
     /** @test */
-    public function it_can_set_custom_measures()
+    public function it_can_set_custom_measures(): void
     {
         $timing = new ServerTiming(new Stopwatch());
         $timing->setDuration('key', 1000);
@@ -22,7 +22,7 @@ class ServerTimingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_start_and_stop_events()
+    public function it_can_start_and_stop_events(): void
     {
         $timing = new ServerTiming(new Stopwatch());
         $timing->start('key');
@@ -37,7 +37,7 @@ class ServerTimingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_start_and_stop_events_using_measure()
+    public function it_can_start_and_stop_events_using_measure(): void
     {
         $timing = new ServerTiming(new Stopwatch());
         $timing->measure('key');
@@ -52,7 +52,7 @@ class ServerTimingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_multiple_events()
+    public function it_can_set_multiple_events(): void
     {
         $timing = new ServerTiming(new Stopwatch());
         $timing->setDuration('key_1', 1000);
@@ -69,7 +69,7 @@ class ServerTimingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_events_without_duration()
+    public function it_can_set_events_without_duration(): void
     {
         $timing = new ServerTiming(new Stopwatch());
         $timing->addMetric($metricText = 'Custom Metric');
@@ -91,7 +91,7 @@ class ServerTimingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_stop_started_events()
+    public function it_can_stop_started_events(): void
     {
         $timing = new ServerTiming(new Stopwatch());
         $timing->start('Started');
@@ -105,7 +105,7 @@ class ServerTimingTest extends TestCase
     }
 
     /** @test */
-    public function it_can_set_durations_with_callables()
+    public function it_can_set_durations_with_callables(): void
     {
         $timing = new ServerTiming(new Stopwatch());
         $timing->setDuration('callable', function() {

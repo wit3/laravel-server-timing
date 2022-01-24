@@ -3,7 +3,7 @@
 use BeyondCode\ServerTiming\ServerTiming;
 
 if (!function_exists('measure_timing')) {
-    function measure_timing(string $key, $callable = null)
+    function measure_timing(string $key, ?callable $callable): void
     {
         /** @var ServerTiming $timing */
         $timing = app(ServerTiming::class);

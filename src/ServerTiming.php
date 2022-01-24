@@ -6,26 +6,29 @@ use Symfony\Component\Stopwatch\Stopwatch;
 
 class ServerTiming
 {
-    /** @var Stopwatch */
-    protected $stopwatch;
+    protected Stopwatch $stopwatch;
 
-    /** @var array */
-    protected $finishedEvents = [];
+    /**
+     * @var array<string, int|float|null> $finishedEvents
+     */
+    protected array $finishedEvents = [];
 
-    /** @var array */
-    protected $startedEvents = [];
+    /**
+     * @var array<string, bool> $startedEvents
+     */
+    protected array $startedEvents = [];
 
     public function __construct(Stopwatch $stopwatch)
     {
         $this->stopwatch = $stopwatch;
     }
 
-    public function addMetric(string $metric)
+    public function addMetric(string $metric): self
     {
         return $this->setDuration($metric, null);
     }
 
-    public function addMessage(string $message)
+    public function addMessage(string $message): self
     {
         return $this->addMetric($message);
     }
@@ -35,7 +38,7 @@ class ServerTiming
         return array_key_exists($key, $this->startedEvents);
     }
 
-    public function measure(string $key)
+    public function measure(string $key): self
     {
         if (! $this->hasStartedEvent($key)) {
             return $this->start($key);
@@ -44,7 +47,7 @@ class ServerTiming
         return $this->stop($key);
     }
 
-    public function start(string $key)
+    public function start(string $key): self
     {
         $this->stopwatch->start($key);
 
@@ -53,7 +56,7 @@ class ServerTiming
         return $this;
     }
 
-    public function stop(string $key)
+    public function stop(string $key): self
     {
         if ($this->stopwatch->isStarted($key)) {
             $event = $this->stopwatch->stop($key);
@@ -66,14 +69,14 @@ class ServerTiming
         return $this;
     }
 
-    public function stopAllUnfinishedEvents()
+    public function stopAllUnfinishedEvents(): void
     {
         foreach (array_keys($this->startedEvents) as $startedEventName) {
             $this->stop($startedEventName);
         }
     }
 
-    public function setDuration(string $key, $duration)
+    public function setDuration(string $key, callable|int|float|null $duration): self
     {
         if (is_callable($duration)) {
             $this->start($key);
@@ -88,11 +91,14 @@ class ServerTiming
         return $this;
     }
 
-    public function getDuration(string $key)
+    public function getDuration(string $key): int|float|null
     {
         return $this->finishedEvents[$key] ?? null;
     }
 
+    /**
+     * @return array<string, int|float|null>
+     */
     public function events(): array
     {
         return $this->finishedEvents;
