@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.0",
         "illuminate/support": "^9.0",
-        "symfony/stopwatch": "6.0"
+        "symfony/stopwatch": "^6.0"
     },
     "require-dev": {
         "orchestra/testbench": "^7.0",
