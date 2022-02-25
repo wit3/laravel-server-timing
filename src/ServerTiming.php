@@ -104,4 +104,11 @@ class ServerTiming
         return $this->finishedEvents;
     }
 
+    public function reset(Stopwatch $stopwatch): void
+    {
+        $this->finishedEvents = [];
+        $this->startedEvents = [];
+        $this->stopwatch = $stopwatch;
+    }
+
 }

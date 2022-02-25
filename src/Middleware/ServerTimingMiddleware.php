@@ -3,8 +3,8 @@
 namespace BeyondCode\ServerTiming\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
 use BeyondCode\ServerTiming\ServerTiming;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 

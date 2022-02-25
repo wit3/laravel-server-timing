@@ -14,6 +14,10 @@ class ServerTimingServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->registerPublishing();
         }
+
+        if (isset($_SERVER['LARAVEL_OCTANE'])) {
+            $this->setupOctane();
+        }
     }
 
     /**
@@ -31,5 +35,32 @@ class ServerTimingServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/config/config.php' => config_path('timing.php'),
         ], 'server-timing-config');
+    }
+
+    protected function resetServerTiming(): void
+    {
+        /**
+         * @var ServerTiming $serverTiming
+         */
+        $serverTiming = $this->app->get(ServerTiming::class);
+        $serverTiming->reset(new \Symfony\Component\Stopwatch\Stopwatch());
+    }
+
+    protected function setupOctane(): void
+    {
+        /** @phpstan-ignore-next-line */
+        $this->app['events']->listen(\Laravel\Octane\Events\RequestReceived::class, function () {
+            $this->resetServerTiming();
+        });
+
+        /** @phpstan-ignore-next-line */
+        $this->app['events']->listen(\Laravel\Octane\Events\TaskReceived::class, function () {
+            $this->resetServerTiming();
+        });
+
+        /** @phpstan-ignore-next-line */
+        $this->app['events']->listen(\Laravel\Octane\Events\TickReceived::class, function () {
+            $this->resetServerTiming();
+        });
     }
 }
