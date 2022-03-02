@@ -27,7 +27,9 @@ class ServerTimingMiddleware
             return $next($request);
         }
 
-        $this->timing->setDuration('Bootstrap', $this->getElapsedTimeInMs());
+        if (!isset($_SERVER['LARAVEL_OCTANE'])) {
+            $this->timing->setDuration('Bootstrap', $this->getElapsedTimeInMs());
+        }
 
         $this->timing->start('App');
 
@@ -38,7 +40,9 @@ class ServerTimingMiddleware
 
         $this->timing->stopAllUnfinishedEvents();
 
-        $this->timing->setDuration('Total', $this->getElapsedTimeInMs());
+        if (!isset($_SERVER['LARAVEL_OCTANE'])) {
+            $this->timing->setDuration('Total', $this->getElapsedTimeInMs());
+        }
 
         $response->headers->set('Server-Timing', $this->generateHeaders());
 
