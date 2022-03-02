@@ -43,7 +43,7 @@ class ServerTimingServiceProvider extends ServiceProvider
          * @var ServerTiming $serverTiming
          */
         $serverTiming = $this->app->get(ServerTiming::class);
-        $serverTiming->reset(new \Symfony\Component\Stopwatch\Stopwatch());
+        $serverTiming->reset();
     }
 
     protected function setupOctane(): void

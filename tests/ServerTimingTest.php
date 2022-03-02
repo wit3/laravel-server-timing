@@ -37,6 +37,25 @@ class ServerTimingTest extends TestCase
     }
 
     /** @test */
+    public function it_can_be_resetted(): void
+    {
+        $timing = new ServerTiming(new Stopwatch());
+        $timing->start('key');
+        sleep(1);
+        $timing->stop('key');
+
+        $events = $timing->events();
+
+        $this->assertCount(1, $events);
+        $this->assertTrue(array_key_exists('key', $events));
+        $this->assertGreaterThanOrEqual(1000, $events['key']);
+
+        $timing->reset();
+
+        $this->assertCount(0, $timing->events());
+    }
+
+    /** @test */
     public function it_can_start_and_stop_events_using_measure(): void
     {
         $timing = new ServerTiming(new Stopwatch());

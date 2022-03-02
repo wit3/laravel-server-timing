@@ -21,6 +21,7 @@ class ServerTiming
     public function __construct(Stopwatch $stopwatch)
     {
         $this->stopwatch = $stopwatch;
+        $this->reset();
     }
 
     public function addMetric(string $metric): self
@@ -104,11 +105,11 @@ class ServerTiming
         return $this->finishedEvents;
     }
 
-    public function reset(Stopwatch $stopwatch): void
+    public function reset(): void
     {
         $this->finishedEvents = [];
         $this->startedEvents = [];
-        $this->stopwatch = $stopwatch;
+        $this->stopwatch->reset();
     }
 
 }
